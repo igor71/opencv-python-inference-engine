@@ -1,6 +1,6 @@
-[![Downloads](https://pepy.tech/badge/opencv-python-inference-engine)](https://pepy.tech/project/opencv-python-inference-engine) [![Downloads](https://pepy.tech/badge/opencv-python-inference-engine/month)](https://pepy.tech/project/opencv-python-inference-engine/month) [![Downloads](https://pepy.tech/badge/opencv-python-inference-engine/week)](https://pepy.tech/project/opencv-python-inference-engine/week)
 
-# opencv-python-inference-engine
+
+# Building from the sources Opencv-Python-Inference-Engine package
 
 It is *Unofficial* pre-built OpenCV+dldt_module package for Python.
 
@@ -9,11 +9,10 @@ There is a [guy with an exellent pre-built set of OpenCV packages](https://githu
 
 **Limitations**:
 + Package comes without contrib modules.
-+ It was tested on Ubuntu 16.04, Ubuntu 18.04, Ubuntu 18.10 as Windows 10 Subsystem and Gentoo.
-+ I had not made builds for Windows or MacOS.
++ It was tested on Ubuntu 16.04 & Ubuntu 18.04 with Local Installed Python ver. 3.6.8
 + It is 64 bit.
 + It built with `ffmpeg` and `v4l` support (`ffmpeg` libs included).
-+ No GTK/QT support -- use `matplotlib` for plotting your results.
++ GTK support Enabled.
 
 This package is most similar to `opencv-python-headless`, main differences are:
 + Usage of `AVX512_SKX` instructions
@@ -28,7 +27,7 @@ For additional info read `cv2.getBuildInformation()` output.
 Remove previously installed versions of `cv2`
 
 ```bash
-pip3 install opencv-python-inference-engine
+pip3 uninstall opencv-python
 ```
 
 ## Known problems and TODOs
