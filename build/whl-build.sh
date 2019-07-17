@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BUILD_DIR=/tmp/opencv-python-inference-engine
+BUILD_DIR=/opencv-python-inference-engine
 
 cd $BUILD_DIR
 
