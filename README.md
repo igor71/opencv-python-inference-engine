@@ -86,6 +86,8 @@ git clone https://github.com/igor71/opencv-python-inference-engine
 b. Build Docker Image & Run It:
 
 ```bash
+cd opencv-python-inference-engine
+ 
 docker build -f Dockerfile-InferenceEngine-Base -t yi/inference-engine:base .
 
 docker run -it -d --name inference_engine -v /media:/media yi/inference-engine:base
