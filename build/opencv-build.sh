@@ -7,7 +7,7 @@ cd /opencv-python-inference-engine/build/opencv
 
 sed -i '11d' /opencv-python-inference-engine/build/opencv/opencv_setup.sh
 
-sed -i '11 a export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig/:/usr/share/pkgconfig/:$PKG_CONFIG_PATH' /opencv-python-inference-engine/build/opencv/opencv_setup.sh
+sed -i '10 a export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig/:/usr/share/pkgconfig/:$PKG_CONFIG_PATH' /opencv-python-inference-engine/build/opencv/opencv_setup.sh
 
 ###### Change string -D WITH_GTK=OFF \ to -D WITH_GTK=ON \ ##############################
 
@@ -31,7 +31,7 @@ sed -i '15 a \PY_VER=`/usr/local/bin/python --version | sed -rn "s/Python .\\.(.
 
 sed -i '17d' /opencv-python-inference-engine/build/opencv/opencv_setup.sh
 
-sed -i '16 a \PY_LIB_PATH=`find /usr/lib/x86_64-linux-gnu -iname libpython3.${PY_VER}m.so`' /opencv-python-inference-engine/build/opencv/opencv_setup.sh
+sed -i '16 a \PY_LIB_PATH=`find /usr/local/lib -iname libpython3.${PY_VER}m.so`' /opencv-python-inference-engine/build/opencv/opencv_setup.sh
 
 sed -i '23d' /opencv-python-inference-engine/build/opencv/opencv_setup.sh
 
@@ -39,7 +39,7 @@ sed -i '22 a \    -D PYTHON3_EXECUTABLE=`which python3.6` \\' /opencv-python-inf
 
 sed -i '25d' /opencv-python-inference-engine/build/opencv/opencv_setup.sh
 
-sed -i '24 a \    -D PYTHON3_NUMPY_INCLUDE_DIRS:PATH=/usr/local/lib/python3.${PY_VER}/dist-packages/numpy/core/include \\' /opencv-python-inference-engine/build/opencv/opencv_setup.sh
+sed -i '24 a \    -D PYTHON3_NUMPY_INCLUDE_DIRS:PATH=/usr/local/lib/python3.${PY_VER}/site-packages/numpy/core/include \\' /opencv-python-inference-engine/build/opencv/opencv_setup.sh
 
 sed -i '26d' /opencv-python-inference-engine/build/opencv/opencv_setup.sh
 
@@ -47,7 +47,11 @@ sed -i '25 a \    -D PYTHON_DEFAULT_EXECUTABLE=`which python3.6` \\' /opencv-pyt
 
 sed -i '27d' /opencv-python-inference-engine/build/opencv/opencv_setup.sh
 
-sed -i '26 a \    -D PYTHON3_PACKAGES_PATH=/usr/local/lib/python3.${PY_VER}/dist-packages \\' /opencv-python-inference-engine/build/opencv/opencv_setup.sh
+sed -i '26 a \    -D PYTHON3_PACKAGES_PATH=/usr/local/lib/python3.${PY_VER}/site-packages \\' /opencv-python-inference-engine/build/opencv/opencv_setup.sh
+
+sed -i '28d' /opencv-python-inference-engine/build/opencv/opencv_setup.sh
+
+sed -i '27 a \    -D PYTHON3_PACKAGES_PATH=/usr/local/include/python3.${PY_VER}m \\' /opencv-python-inference-engine/build/opencv/opencv_setup.sh
 
 ABS_PORTION=/opencv-python-inference-engine ./opencv_setup.sh
 
