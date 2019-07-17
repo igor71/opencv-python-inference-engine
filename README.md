@@ -241,7 +241,7 @@ sed -i '27 a \    -D PYTHON3_PACKAGES_PATH=/usr/local/include/python3.${PY_VER}m
 ```
 ###### Checkinfg Results
 
-`nano /tmp/opencv-python-inference-engine/build/opencv/opencv_setup.sh`
+`nano /opencv-python-inference-engine/build/opencv/opencv_setup.sh`
 
 ##### Perform Build Steps
 
