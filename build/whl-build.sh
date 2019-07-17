@@ -20,7 +20,7 @@ python setup.py bdist_wheel
 
 pip install dist/opencv_python_inference_engine-4.1.0.*.whl
 
-OPCVIE=$(find /tmp/opencv-python-inference-engine/create_wheel/dist  -printf "%f\n")
+OPCVIE=$(find /opencv-python-inference-engine/create_wheel/dist  -printf "%f\n")
 
 WHL=$( echo $OPCVIE | cut -d' ' -f2)
 
