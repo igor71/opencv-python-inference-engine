@@ -29,15 +29,13 @@ Remove previously installed versions of `cv2`
 ```bash
 pip3 uninstall opencv-python
 ```
+Install Compaled version:
+
+```bash
+pip install dist/opencv_python_inference_engine-4.1.0.*.whl
+```
 
 ## Known problems and TODOs
-
-### No GTK/QT support
-
-[skvarks's package](https://github.com/skvark/opencv-python) has `Qt4` GUI for `opencv` and it is +16 MB to file size.
-Also it is a lot of problems and extra work to compile Qt\GTK libs from sources.
-In 95% of cases `matplotlib.imshow()` will be sufficient, in other 5% use another package for now or compile it with GUI
-support by yourself.
 
 #### Steps to compile it with `GTK-2` support (checked)
 
@@ -49,20 +47,12 @@ Make next changes in `opencv-python-inference-engine/build/opencv/opencv_setup.s
 
 Exporting `PKG_CONFIG_PATH` for `ffmpeg` somehow messes with default values.
 
-### Not really `manylinux1`
-
-The package is renamed to `manylinux1` from `linux`, because, according to [PEP 513](https://www.python.org/dev/peps/pep-0513/), PyPi repo does not want to apply other architectures.
-And compiling it for CentOS 5.11 is pretty challenging (there is no such lxd container plus I do not want to mess with docker) and denies from using some of the necessary libs (like tbb).
-Also, I suspect that it will be poorly optimized.
-
 ### Build `ffmpeg` with `tbb`
 
 Both `dldt` and `opencv` are compiled with `tbb` support, and `ffmpeg` compiled without it -- this does not feels right.
 There is some unproved solution for how to compile `ffmpeg` with `tbb` support:
 <https://stackoverflow.com/questions/6049798/ffmpeg-mt-and-tbb>  
 <https://stackoverflow.com/questions/14082360/pthread-vs-intel-tbb-and-their-relation-to-openmp>
-
-Maybe someday I will try it.
 
 ### Versioning
 
@@ -71,7 +61,8 @@ First 3 letters are the version of OpenCV, the last one -- package version. E.g,
 
 ## Compiling from source
 
-I compiled it on Ubuntu 16.04 Linux Container.
+I compiled it on Ubuntu 16.04 Linux Docker Container with Python ver. 3.6.8.
+No Python Virrtual ENV were used. Used system $PYTHONPATH
 
 ### Requirements
 
@@ -79,20 +70,32 @@ I compiled it on Ubuntu 16.04 Linux Container.
 + <https://docs.opencv.org/4.0.0/d7/d9f/tutorial_linux_install.html> (`build-essential`, `cmake`, `git`, `pkg-config`, `python3-dev`)
 + `nasm` (for ffmpeg)
 + `python3`
-+ `virtualenv`
 + `libusb-1.0-0-dev` (for dldt  >= 2019_R1.0.1)
 + `chrpath`
 
-```
-sudo apt-get update
-sudo apt install build-essential cmake git pkg-config python3-dev nasm python3 virtualenv libusb-1.0-0-dev chrpath
-```
+All above alredy installed inside docker container (see Dockerfile)
 
 Last successfully tested with dldt-2019_R1.1, opencv-4.1.0, ffmpeg-4.1.3
 
 ### Preparing
+1. Clone repository to local server:
+
+```bash
+git clone https://github.com/igor71/opencv-python-inference-engine
+```
+
+2. Build Docker Image & Run It:
+
+```bash
+docker build -f Dockerfile-InferenceEngine-Base -t yi/inference-engine:base .
+
+docker run -it -d --name inference_engine -v /media:/media yi/inference-engine:base
+
+yi-dockeradmin inference_engine
+```
 
 1. Download releases of [dldt](https://github.com/opencv/dldt/releases), [opencv](https://github.com/opencv/opencv/releases) and [ffmpeg](https://github.com/FFmpeg/FFmpeg/releases) (or clone their repos)
+
 2. Unpack archives to `dldt`,`opencv` and `ffmpeg` folders.
 
 3. You'll need to get 3rd party `ade` code for dldt of certain commit (as in original dldt repo):
