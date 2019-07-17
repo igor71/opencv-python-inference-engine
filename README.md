@@ -81,7 +81,7 @@ Last successfully tested with dldt-2019_R1.1, opencv-4.1.0, ffmpeg-4.1.3
 
 a. Clone repository on the local server:
 ```bash
-git clone https://github.com/igor71/opencv-python-inference-engine
+git clone --branch=custom-py-3.6.8 --depth=1 https://github.com/igor71/opencv-python-inference-engine
 ```
 b. Build Docker Image & Run It:
 
@@ -97,7 +97,7 @@ yi-dockeradmin inference_engine
 c. Clone repository inside running docker container:
 
 ```bash
-git clone https://github.com/igor71/opencv-python-inference-engine
+git clone --branch=custom-py-3.6.8 --depth=1 https://github.com/igor71/opencv-python-inference-engine
 ```
 
 #### Auto Build Steps
