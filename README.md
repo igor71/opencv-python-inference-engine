@@ -133,7 +133,7 @@ python opencv_build_info.py
 ```
 
 
-#### Manual Build Steps
+### Manual Build Steps
 
 
 1. Download releases of [dldt](https://github.com/opencv/dldt/releases), [opencv](https://github.com/opencv/opencv/releases) and [ffmpeg](https://github.com/FFmpeg/FFmpeg/releases) (or clone their repos) & unpack archives to `dldt`,`opencv` and `ffmpeg` folders.
