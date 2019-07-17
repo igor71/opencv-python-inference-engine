@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /tmp/opencv-python-inference-engine/build/opencv
+cd /opencv-python-inference-engine/build/opencv
 
 ###### Change export PKG_CONFIG_PATH=$ABS_PORTION/build/ffmpeg/binaries/lib/pkgconfig:$PKG_CONFIG_PATH
 ###### -->> You will need to add absolute paths to .pc files
