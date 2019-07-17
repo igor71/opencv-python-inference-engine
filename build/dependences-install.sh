@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /tmp/opencv-python-inference-engine/dldt/inference-engine/thirdparty/ade
+cd /opencv-python-inference-engine/dldt/inference-engine/thirdparty/ade
 
 git clone https://github.com/opencv/ade/ ./
 
