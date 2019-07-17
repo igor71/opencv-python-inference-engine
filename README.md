@@ -209,16 +209,16 @@ make --jobs=$(nproc --all)
 
 ```bash
 sed -i '11d' /tmp/opencv-python-inference-engine/build/opencv/opencv_setup.sh
-sed -i '11 a export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig/:/usr/share/pkgconfig/:$PKG_CONFIG_PATH' /tmp/opencv-python-inference-engine/build/opencv/opencv_setup.sh
+sed -i '10 a export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig/:/usr/share/pkgconfig/:$PKG_CONFIG_PATH' /tmp/opencv-python-inference-engine/build/opencv/opencv_setup.sh
 ```
 
 ###### change string -D WITH_GTK=OFF \ to -D WITH_GTK=ON \ 
 
-############## Delete Original line ###################################################################
+############# Delete Original line #############
 
 `sed -i '48d' /tmp/opencv-python-inference-engine/build/opencv/opencv_setup.sh`
 
-############## Adding Modified Line ###################################################################
+############# Adding Modified Line #############
 
 `sed -i '47 a \    -D WITH_GTK=ON \\' /tmp/opencv-python-inference-engine/build/opencv/opencv_setup.sh`
 
