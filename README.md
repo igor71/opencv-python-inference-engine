@@ -78,7 +78,12 @@ All above alredy installed inside docker container (see Dockerfile)
 Last successfully tested with dldt-2019_R1.1, opencv-4.1.0, ffmpeg-4.1.3
 
 ### Preparing
-a. Build Docker Image & Run It:
+
+a. Clone repository on the local server:
+```bash
+git clone https://github.com/igor71/opencv-python-inference-engine
+```
+b. Build Docker Image & Run It:
 
 ```bash
 docker build -f Dockerfile-InferenceEngine-Base -t yi/inference-engine:base .
@@ -87,12 +92,12 @@ docker run -it -d --name inference_engine -v /media:/media yi/inference-engine:b
 
 yi-dockeradmin inference_engine
 ```
-
-b. Clone repository to local server:
+c. Clone repository inside running docker container:
 
 ```bash
 git clone https://github.com/igor71/opencv-python-inference-engine
 ```
+
 #### Auto Build Steps
 
 1. Change working directory
