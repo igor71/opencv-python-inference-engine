@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd opencv-python-inference-engine/
+cd /opencv-python-inference-engine
 
 wget -P $PWD/dldt wget https://github.com/opencv/dldt/archive/2019_R1.1.tar.gz
 
