@@ -178,7 +178,8 @@ git reset --hard 562e301
 
 `$ABS_PORTION` is a absolute path to `opencv-python-inference-engine` dir.
 
-###############  BUild FFMPEG  ######################
+#####  BUild FFMPEG  
+
 ```bash
 cd ../../../../build/ffmpeg
 ./ffmpeg_setup.sh
@@ -186,37 +187,43 @@ cd ../../../../build/ffmpeg
 make --jobs=$(nproc --all)
 make install
 ```
-###############  BUild DLDT  ######################
+######  BUild DLDT  
 
 `cd ../dldt`
+
 NOTE, if you do not want to buld all IE tests --
 comment L:142 in `../../dldt/inference-engine/CMakeLists.txt` ("add_subdirectory(tests)") <https://github.com/opencv/dldt/pull/139>
+
 ```bash
 sed -i '/add_subdirectory(tests)/s/^/#/g' ../../dldt/inference-engine/CMakeLists.txt
 ./dldt_setup.sh
 make --jobs=$(nproc --all)
 ```
-###############  BUild OPENCV  ######################
+######  BUild OPENCV 
 
 `cd ../opencv`
 
-############### change export PKG_CONFIG_PATH=$ABS_PORTION/build/ffmpeg/binaries/lib/pkgconfig:$PKG_CONFIG_PATH --
-you will need to add absolute paths to .pc files #############
-
 `Original line --->>>  export PKG_CONFIG_PATH=$FFMPEG_PATH/lib/pkgconfig:$PKG_CONFIG_PATH`
+
+###### change export PKG_CONFIG_PATH in order to work with `GTK-2` support 
+
 ```bash
 sed -i '11d' /tmp/opencv-python-inference-engine/build/opencv/opencv_setup.sh
 sed -i '11 a export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig/:/usr/share/pkgconfig/:$PKG_CONFIG_PATH' /tmp/opencv-python-inference-engine/build/opencv/opencv_setup.sh
 ```
-############## change string -D WITH_GTK=OFF \ to -D WITH_GTK=ON \ ##############################
+
+###### change string -D WITH_GTK=OFF \ to -D WITH_GTK=ON \ 
 
 ############## Delete Original line ###################################################################
+
 `sed -i '48d' /tmp/opencv-python-inference-engine/build/opencv/opencv_setup.sh`
+
 ############## Adding Modified Line ###################################################################
+
 `sed -i '47 a \    -D WITH_GTK=ON \\' /tmp/opencv-python-inference-engine/build/opencv/opencv_setup.sh`
-############## Adding BackSlash to the end of the line - not needed, above command works! #############
-`sed -i '/-D WITH_GTK=ON/ s/$/ \\/' /tmp/opencv-python-inference-engine/build/opencv/opencv_setup.sh`
-############################ Configuring to work with local python (ver.3.6.8) ########################
+
+###### Configuring to work with local python (ver.3.6.8)
+
 ```bash
 sed -i '15d' /tmp/opencv-python-inference-engine/build/opencv/opencv_setup.sh
 sed -i '14 a \# grep "6" from "Python 3.6.8"' /tmp/opencv-python-inference-engine/build/opencv/opencv_setup.sh
@@ -233,14 +240,19 @@ sed -i '25 a \    -D PYTHON_DEFAULT_EXECUTABLE=`which python3.6` \\' /tmp/opencv
 sed -i '27d' /tmp/opencv-python-inference-engine/build/opencv/opencv_setup.sh
 sed -i '26 a \    -D PYTHON3_PACKAGES_PATH=/usr/local/lib/python3.${PY_VER}/dist-packages \\' /tmp/opencv-python-inference-engine/build/opencv/opencv_setup.sh
 ```
-################### Checkinfg Results ##############################################################
+###### Checkinfg Results
+
 `nano /tmp/opencv-python-inference-engine/build/opencv/opencv_setup.sh`
+
+##### Perform Build Steps
+
 ```bash 
 ABS_PORTION=/tmp/opencv-python-inference-engine ./opencv_setup.sh
 
 make --jobs=$(nproc --all)
 ```
-################### Wheel creation & installation ##################################################
+
+###### Wheel creation & installation
 
 ```bash
 # get all compiled libs together
@@ -263,6 +275,7 @@ pip install dist/opencv_python_inference_engine-4.1.0.*.whl
 ```
 
 ### Testing installed opencv package
+
 ```bash
 cd /opencv-python-inference-engine/build/TEST
 python foo.py
