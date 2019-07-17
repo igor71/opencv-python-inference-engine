@@ -1,0 +1,110 @@
+FROM ubuntu:16.04
+
+#################################################
+#  Update repositories -- we will need them all #
+#  the time, also when container is run         #
+#################################################
+
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update
+
+
+################################################
+#     Basic desktop environment                #
+################################################
+
+# Locale, language
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y locales
+RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+locale-gen
+ENV LC_ALL en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
+
+# > At the moment, setting "LANG=C" on a Linux system *fundamentally breaks Python 3*, and that's not OK, fixing...
+# http://bugs.python.org/issue19846
+ENV LANG C.UTF-8
+
+
+#################################################
+#          Very basic installations             #
+#################################################
+
+RUN apt-get install -y --no-install-recommends \
+    software-properties-common \
+    build-essential \
+    pkg-config \
+    libusb-1.0-0-dev \
+    chrpath \
+    cmake \
+    nasm \
+    curl \
+    wget \
+    tree \
+    vim \
+    zip \
+    unzip \
+    rsync \
+    pv \
+    openssh-client \
+    screen \
+    nano \
+    htop \
+    sudo \
+    iputils-ping \
+    git && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+
+#################################################
+#################################################
+#     Python 3.6 installations for dev          #
+#################################################
+
+RUN add-apt-repository ppa:jonathonf/python-3.6 && \
+    apt-get update && apt-get install -y --no-install-recommends \
+    python3.6 \
+    python3.6-dev \
+    python3.6-venv \
+    && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN ln -s /usr/bin/python3.6 /usr/local/bin/python3 && \
+    ln -s /usr/local/bin/pip /usr/local/bin/pip3 && \
+    ln -s /usr/bin/python3.6 /usr/local/bin/python
+
+RUN curl -fSsL -O ftp://jenkins-cloud/pub/Develop/get-pip.py && \
+    python3.6 get-pip.py && \
+    rm get-pip.py
+
+
+#################################
+#     Python Installations      #
+#################################
+
+RUN python3.6 -m pip --no-cache-dir install \
+    numpy \
+    cython \
+    && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+
+#########################################
+# Add Welcome Message With Instructions #
+#########################################
+
+RUN  printf '[ ! -z "$TERM" -a -r /etc/motd ] && cat /etc/motd' \
+        >> /etc/bash.bashrc \
+        ; printf "\
+||||||||||||||||||||||||||||||||||||\n\
+|                                  |\n\
+| Build Server Running Ubuntu 16   |\n\
+| Using As Linux Build Environment |\n\
+| For OpenCV with DLDT support     |\n\
+|                                  |\n\
+||||||||||||||||||||||||||||||||||||\n\
+\n "\
+        > /etc/motd
