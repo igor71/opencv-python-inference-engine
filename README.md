@@ -95,48 +95,38 @@ git clone https://github.com/igor71/opencv-python-inference-engine
 ```
 #### Auto Build Steps
 
-1. cd /opencv-python-inference-engine/build
+1. Change working directory
 
+```bash
+cd /opencv-python-inference-engine/build
+```
 2. Run download-extract-dir.sh script
-
 ```bash
 bash download-extract-dir.sh
 ```
-
 3. Run dependences-install.sh
-
 ```bash
 bash dependences-install.sh
 ```
-
 4. Run opencv-build.sh script
-
 ```bash
 bash opencv-build.sh
 ```
-
 5. Run whl-build.sh script
-
 ```bash
 bash whl-build.sh
 ```
-
 6. Test installed opencv package
-
 ```bash
 cd TEST
 python foo.py
 ```
-
 Should return following output:
-
 ```bash
 Success!
 [[0.00815217 0.9918479 ]]
 ```
-
 If needed to check config output, used for compaling opencv, run those commands:
-
 ```bash
 cd TEST
 python opencv_build_info.py
