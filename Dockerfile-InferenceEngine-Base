@@ -163,6 +163,18 @@ RUN python3.6 -m pip --no-cache-dir install \
     && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+    
+ 
+#################################
+#     Python Installations      #
+#################################
+
+RUN python -m pip --no-cache-dir install \
+    numpy \
+    cython \
+    && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 
 #########################################
