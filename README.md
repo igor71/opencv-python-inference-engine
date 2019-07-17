@@ -246,7 +246,8 @@ sed -i '27 a \    -D PYTHON3_PACKAGES_PATH=/usr/local/include/python3.${PY_VER}m
 ##### Perform Build Steps
 
 ```bash 
-ABS_PORTION=/tmp/opencv-python-inference-engine ./opencv_setup.sh
+cd ../build/opencv/
+ABS_PORTION=/opencv-python-inference-engine ./opencv_setup.sh
 
 make --jobs=$(nproc --all)
 ```
