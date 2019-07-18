@@ -30,7 +30,7 @@ Remove previously installed versions of `cv2`
 ```bash
 pip uninstall opencv-python
 ```
-Install Compaled version:
+Install Compailed version:
 
 ```bash
 pip install dist/opencv_python_inference_engine-4.1.0.*.whl
