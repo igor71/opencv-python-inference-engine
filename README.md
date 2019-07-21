@@ -50,8 +50,8 @@ First 3 letters are the version of OpenCV, the last one -- package version. E.g,
 
 ## Compiling from source
 
-*I compiled it on Ubuntu 16.04 Linux Docker Container with Python ver. 3.6.8.
-No Python Virtual ENV were used. Used system $PYTHONPATH*
+*I compiled it on Ubuntu 16.04 Linux Docker Container with Python ver. 3.6.8.*
+*No Python Virtual ENV were used. Used system $PYTHONPATH*
 
 ### Requirements
 
