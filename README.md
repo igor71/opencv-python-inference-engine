@@ -159,9 +159,16 @@ In case you've got following error when testing opencv installation:
 ```bash
 ModuleNotFoundError: No module named 'cv2.cv2'
 ```
-Check the path to `libpython3.6m.so` file:
+Check existance of `libpython3.6m.so` file:
 
 ```bash
+python check_libpythonx.xm.so_path
+```
+
+Next, chech opencv compilation config file against default pip installation path
+
+```bash
+python opencv_build_info.py
 ```
 
 ### Reference:
