@@ -4,7 +4,7 @@
 
 It is *Unofficial* pre-built OpenCV+dldt_module package for Python.
 
-`PYTHON3_PACKAGES_PATH=/usr/local/lib/python3.${PY_VER}/dist-packages`
+`PYTHON3_PACKAGES_PATH=/usr/local/lib/python3.${PY_VER}/site-packages`
 
 **Why:**  
 There is a [guy with an exellent pre-built set of OpenCV packages](https://github.com/skvark/opencv-python), but they are all came without [dldt module](https://github.com/opencv/dldt). And you need that module if you want to run models from [Intel's model zoo](https://github.com/opencv/open_model_zoo/).
