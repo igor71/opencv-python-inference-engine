@@ -4,7 +4,7 @@
 
 It is *Unofficial* pre-built OpenCV+dldt_module package for Python.
 
-`*PYTHON3_PACKAGES_PATH=/usr/local/lib/python3.${PY_VER}/dist-packages*`
+`PYTHON3_PACKAGES_PATH=/usr/local/lib/python3.${PY_VER}/dist-packages`
 
 **Why:**  
 There is a [guy with an exellent pre-built set of OpenCV packages](https://github.com/skvark/opencv-python), but they are all came without [dldt module](https://github.com/opencv/dldt). And you need that module if you want to run models from [Intel's model zoo](https://github.com/opencv/open_model_zoo/).
@@ -50,8 +50,8 @@ First 3 letters are the version of OpenCV, the last one -- package version. E.g,
 
 ## Compiling from source
 
-I compiled it on Ubuntu 16.04 Linux Docker Container with Python ver. 3.6.8.
-No Python Virtual ENV were used. Used system $PYTHONPATH
+*I compiled it on Ubuntu 16.04 Linux Docker Container with Python ver. 3.6.8.
+No Python Virtual ENV were used. Used system $PYTHONPATH*
 
 ### Requirements
 
@@ -61,7 +61,7 @@ No Python Virtual ENV were used. Used system $PYTHONPATH
 + `libusb-1.0-0-dev` (for dldt  >= 2019_R1.0.1)
 + `chrpath`
 
-All above alredy installed inside docker container (see Dockerfile)
+*All above alredy installed inside docker container (see Dockerfile)*
 
 Last successfully tested with dldt-2019_R1.1 & opencv-4.1.0
 
