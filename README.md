@@ -167,7 +167,9 @@ python check_libpythonx.xm.so_path
 
 Next, check opencv compilation config file against default pip installation path:
 
-```
+```bash
+python opencv_build_info.py
+
 Python 3:
     Interpreter:                 /usr/local/bin/python3.6 (ver 3.6.8)
     Libraries:                   /usr/local/lib/libpython3.6m.so (ver 3.6.8)
@@ -175,9 +177,7 @@ Python 3:
     install path:                /usr/local/include/python3.6m
 ```
 
-```bash
-python opencv_build_info.py
-```
+Default installed python have different pip installation path then python compaled from the sources.
 
 ### Reference:
 https://github.com/opencv/opencv/wiki/Intel's-Deep-Learning-Inference-Engine-backend
