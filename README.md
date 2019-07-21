@@ -165,7 +165,15 @@ Check existance of `libpython3.6m.so` file:
 python check_libpythonx.xm.so_path
 ```
 
-Next, chech opencv compilation config file against default pip installation path
+Next, check opencv compilation config file against default pip installation path:
+
+```
+Python 3:
+    Interpreter:                 /usr/local/bin/python3.6 (ver 3.6.8)
+    Libraries:                   /usr/local/lib/libpython3.6m.so (ver 3.6.8)
+    numpy:                       /usr/local/lib/python3.6/site-packages/numpy/core/include (ver 1.16.4)
+    install path:                /usr/local/include/python3.6m
+```
 
 ```bash
 python opencv_build_info.py
