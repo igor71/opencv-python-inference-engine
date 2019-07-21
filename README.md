@@ -152,6 +152,18 @@ python setup.py bdist_wheel
 pip install dist/opencv_python_inference_engine-4.1.0.*.whl
 ``` 
 
+### TrobleShooting
+
+In case you've got following error when testing opencv installation:
+
+```bash
+ModuleNotFoundError: No module named 'cv2.cv2'
+```
+Check the path to `libpython3.6m.so` file:
+
+```bash
+```
+
 ### Reference:
 https://github.com/opencv/opencv/wiki/Intel's-Deep-Learning-Inference-Engine-backend
 https://github.com/banderlog/opencv-python-inference-engine
